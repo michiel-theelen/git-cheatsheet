@@ -16,7 +16,8 @@ body {
 
 .article {
     width:67%;
-    min-width:400px;
+    min-width:460px;
+    max-width: 600px;
     margin:2em;
     position: relative;
     

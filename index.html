@@ -12,16 +12,24 @@
       <div class="article-content">
         <p>There are already some great Git cheat sheets available online but I still find myself referring back to my own notes when I want to check something that I don’t do everyday. So for future reference here is the subset of Git commands that I tend to use most often:</p>
         
-        <h3 id="getting-started">Getting Started</h3>
+        <h3 id="getting-started">Create repository and add to Github</h3>
         <h4 id="create-new-repository">Create new repository</h4>
         <pre class="terminal"><code>cd project-working-directory
-        git init (in project working directory)</code></pre>
+        git init</code></pre>
    
-        <h4 id="adding-files-and-committing">Adding files and committing</h4>
+        <h4 id="adding-files-and-committing">Add files and commit changes</h4>
         <pre class="terminal"><code>git add .
         git commit -m 'initial commit'</code></pre>
-    
-        <h4 id="checking-status">Checking status</h4>
+          
+        <h4 id="linking github">Link to Github and check if it worked</h4>
+        <p>Before this is possible, the empty repository should be made on Github. After creating the repository the, SSH-link can be copied from Github.</p>
+        <pre class="terminal"><code>git remote add origin git@github.com:themichiel/REPOSITORY-NAME.git
+          git remote -v</code></pre>
+         
+        <h4 id="pushing">Push to Github</h4>
+        <pre class="terminal"><code>git push -u origin master</code></pre>
+
+        <h4 id="checking-status">Check status</h4>
         <pre class="terminal"><code>git stats
         git log [--pretty]</code></pre>
 
