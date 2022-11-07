@@ -1,0 +1,115 @@
+html, body {
+    background-color: rgb(71, 71, 71);
+    font: helvetica;
+    color:whitesmoke;  
+    scroll-behavior: smooth;
+}
+
+body {
+    width:100%;
+    height: 100%;
+    font-family: helvetica, sans-serif;
+    /* Center child horizontally*/
+    display: flex;
+    justify-content: right;
+}
+
+.article {
+    width:67%;
+    min-width:400px;
+    margin:2em;
+    position: relative;
+    
+}
+
+code p { 
+    margin: 0 !important;
+    margin-block-end: 0;
+}
+
+p {
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+.terminal {
+    position: relative;
+    background-color: black;
+    color: whitesmoke; 
+    border-radius: .3em;
+    border: .1em dashed white;
+    padding:1em;
+}
+
+h2 {
+    color:aqua;
+}
+
+h3 {
+    color:aquamarine;
+}
+
+code span:before {
+    content: '$ ';
+    user-select: none;
+}
+
+span {
+    display:block;
+    margin:0;
+    width:100%;
+}
+
+button.copy-code {
+    position: absolute;
+    top: .5em;;
+    padding:.5em;
+    right: .5em;
+
+}
+
+pre,code {
+    white-space: pre-line;
+    margin:0;
+    padding:0;
+    text-align: left;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+button:active{
+    background-color: aliceblue;;
+}
+
+ul {
+    position: fixed;
+    left: 1em;
+    top: 10em;
+    padding: 1em;
+    background-color:hsl(180, 100%, 32%);
+}
+
+li{
+    list-style-type: none;
+    margin: 1em;
+}
+li a {
+    color:whitesmoke;
+    text-decoration: none;
+}
+
+h4 {
+    margin-bottom:0;
+}
+
+code::first-letter { 
+    user-select: none;
+  }

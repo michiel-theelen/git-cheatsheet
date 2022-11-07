@@ -1,0 +1,208 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+
+
+
+    <div class="article">
+      <h2>Git Cheat Sheet</h2>
+      <div class="article-content">
+        <p>There are already some great Git cheat sheets available online but I still find myself referring back to my own notes when I want to check something that I don’t do everyday. So for future reference here is the subset of Git commands that I tend to use most often:</p>
+        
+        <h3 id="getting-started">Getting Started</h3>
+        <h4 id="create-new-repository">Create new repository</h4>
+        <pre class="terminal"><code>cd project-working-directory
+        git init (in project working directory)</code></pre>
+   
+        <h4 id="adding-files-and-committing">Adding files and committing</h4>
+        <pre class="terminal"><code>git add .
+        git commit -m 'initial commit'</code></pre>
+    
+        <h4 id="checking-status">Checking status</h4>
+        <pre class="terminal"><code>git stats
+        git log [--pretty]</code></pre>
+
+        <h3 id="cloning-a-repository-from-github">Cloning a repository from github</h3>
+        <h4 id="cloning-a-public-repository">Cloning a public repository</h4>
+        <pre class="terminal"><code>$ git clone git://github.com/path-to-repository/project.git</code></pre>
+       
+        <h4 id="cloning-a-private-repository-to-which-we-can-later-push-changes">Cloning a private repository (to which we can later push changes):</h4>
+        <pre class="terminal"><code>$ git clone git@github.com:username/project.git </code></pre>
+        
+        <h4 id="synchronising-changes">Synchronising changes</h4>
+        <p>Pull changes from original source of clone (no need to specify remote repository name as it is stored when the repository was first cloned):</p>
+        <pre class="terminal"><code>$ git pull </code></pre>
+        <p>Make changes, add and commit then push updates to remote repository</p>
+        <pre class="terminal"><code>$ git push </code></pre>
+        
+        <h3 id="branches">Branches</h3>
+        <pre class="terminal"><code>$ git branch mybranch     (create the branch named 'mybranch')
+        $ git checkout mybranch   (switch to the branch)
+        $ git checkout master     (switch back to the master branch)
+        $ git branch              (list all branches) </code></pre>  
+        
+        <h4 id="pushing-a-branch">Pushing a branch</h4>
+        <pre class="terminal"><code>$ git push origin mybranch</code></pre>
+        
+        <h4 id="merging-a-branch">Merging a branch</h4>
+        <pre class="terminal"><code>$ git checkout master   (first switch to the master branch)
+        $ git merge mybranch    (merge all changes from mybranch into the master branch)
+        $ gid add &lt;file&gt;        (fix and add any conflicts)
+        $ git commit -m 'merged changes'</code></pre>
+
+        <h4 id="delete-a-branch">Delete a branch</h4>
+        <pre class="terminal"><code>$ git branch -d mybranch</code></pre>
+        
+        <h4 id="deleting-a-remote-branch">Deleting a remote branch</h4>
+        <pre class="terminal"><code>$ git push origin :mybranch</code></pre>
+        
+        <h3 id="tags">Tags</h3>
+        <h4 id="showing-tags">Showing tags</h4>
+        <pre class="terminal"><code>$ git tag [-l v1.*]</code></pre>
+        <h4 id="create-annotated-tag">Create annotated tag</h4>
+        <pre class="terminal"><code>$ git tag -a v1.5 -m 'version 1.5'</code></pre>
+        <h4 id="tagging-an-existing-commit">Tagging an existing commit</h4>
+        <pre class="terminal"><code>$ git tag -a v1.1 -m 'version 1.1' &lt;*checksum*&gt;  (checksum from git log)</code></pre>
+        <h4 id="pushing-tags">Pushing tags</h4>
+        <pre class="terminal"><code>$ git push --tags</code></pre>
+        
+        <h3 id="logs">Logs</h3>
+        <h4 id="view-changes-patches">View changes (patches)</h4>
+        <pre class="terminal"><code>$ git log -p</code></pre>
+        <h4 id="view-stats">View Stats</h4>
+        <pre class="terminal"><code>$ git log --stat</code></pre>
+        <h4 id="use-one-line-output">Use one line output</h4>
+        <pre class="terminal"><code>$ git log --pretty=oneline</code></pre>
+        <h4 id="view-branches">View branches</h4>
+        <pre class="terminal"><code>$ git log --pretty=oneline --graph</code></pre>
+        <h4 id="search-commit-messages">Search commit messages</h4>
+        <pre class="terminal"><code>$ git log --grep='pattern' --pretty=oneline</code></pre>
+        <h4 id="file-history">File History</h4>
+        <pre class="terminal"><code>$ git log --pretty=oneline -- &lt;file&gt;</code></pre>
+        <h4 id="directory-history">Directory History</h4>
+        <pre class="terminal"><code>$ git log --pretty=oneline --all -- &lt;dir&gt;</code></pre>
+        <h4 id="do-not-show-merges">Do not show merges</h4>
+        <pre class="terminal"><code>$ git log --pretty=oneline --no-merges</code></pre>
+        <h4 id="show-last-5-commits">Show last 5 commits</h4>
+        <pre class="terminal"><code>$ git log --pretty=oneline -5</code></pre>
+        <h4 id="commits-between-two-other-commits">Commits between two other commits</h4>
+        <pre class="terminal"><code>$ git log master..mybranch --pretty=oneline
+        $ git log</code></pre>
+        
+        <h3 id="diff">Diff</h3>
+        <h4 id="show-modifications-not-yet-staged">Show modifications not yet staged</h4>
+        <pre class="terminal"><code>$ git diff</code></pre>
+        <h4 id="show-modifications-not-yet-committed">Show modifications not yet committed</h4>
+        <pre class="terminal"><code>$ git diff --staged</code></pre>
+        <h4 id="show-all-changes-since-last-commit">Show all changes since last commit</h4>
+        <pre class="terminal"><code>$ git diff HEAD</code></pre>
+        <h4 id="show-changes-to-a-file-since-a-specific-tagged-commit">Show changes to a file since a specific (tagged) commit</h4>
+        <pre class="terminal"><code>$ git diff v1.0 -- &lt;file&gt;</code></pre>
+        <h4 id="show-stats-for-differences-between-two-tagged-commits">Show stats for differences between two (tagged) commits</h4>
+        <pre class="terminal"><code>$ git diff v1.0 v1.1 --stat</code></pre>
+        
+        <h3 id="undo-changes">Undo Changes</h3>
+        <h4 id="unstage-a-file">Unstage a file</h4>
+        <pre class="terminal"><code>$ git reset HEAD &lt;file&gt;</code></pre>
+        <p>If you cannot remember this create an alias as follows:</p>
+        <pre class="terminal"><code>$ git config --global alias.unstage 'reset HEAD'
+        $ git unstage &lt;file&gt;</code></pre>
+        <h4 id="discard-changes-to-a-file">Discard changes to a file</h4>
+        <pre class="terminal"><code>$ git checkout -- &lt;file&gt;</code></pre>
+        
+        <h3 id="breaking-existing-commits-to-a-branch">Breaking Existing Commits to a Branch</h3>
+        <p>Make a note of the SHAR for the commit that you want to rollback to:</p>
+        <pre class="terminal"><code>$ git log --pretty=oneline</code></pre>
+        <p>Then switch to the branch and reset the head to the required commit</p>
+        <pre class="terminal"><code>$ git branch mybranch
+        $ git reset --hard &lt;SHAR&gt;</code></pre>
+        <p>If the previous head was pushed to a repository</p>
+        <pre class="terminal"><code>$ git push --force     (deletes all later changes!)</code></pre>
+        
+    </div>
+
+    <script>
+      
+      let copyButtonLabel = "Copy Code";
+      // use a class selector if available
+      let blocks = document.querySelectorAll(".terminal");
+
+      blocks.forEach((block) => {
+        // only add button if browser supports Clipboard API
+        if (navigator.clipboard) {
+          let button = document.createElement("button");
+          button.classList.add('copy-code');
+
+          button.innerText = copyButtonLabel;
+          block.appendChild(button);
+
+          button.addEventListener("click", async () => {
+            await copyCode(block, button);
+          });
+        }
+      });
+
+      async function copyCode(block, button) {
+        let code = block.querySelector("code");
+        let text = code.innerText;
+
+        await navigator.clipboard.writeText(text);
+      }
+    </script>
+
+    <script>
+      // extract all headers
+
+      var headers = []
+
+      function walk (nodes) {
+        nodes.forEach((node) => {
+          var sub = Array.from(node.childNodes)
+          if (sub.length) {
+            walk(sub)
+          }
+          if (/h3/i.test(node.tagName)) {
+            headers.push({
+              id: node.getAttribute('id'),
+              level: parseInt(node.tagName.replace('H', '')),
+              title: node.innerText
+            })
+          }
+        })
+      }
+
+      walk(Array.from(document.body.childNodes))
+
+      console.dir(headers)
+
+      // generate TOC
+
+      var link = (header) =>
+        '<li><a href="#' + header.id + '">' + header.title + '</a></li>'
+
+      var html = '<ul>'
+
+      headers.forEach((header, index) => {
+        if (index) {
+          var prev = headers[index - 1]
+        }
+        if (!index || prev.level === header.level) {
+          html += link(header)
+        }
+        else if (prev.level > header.level) {
+          html += '</ul>' + link(header)
+        }
+        else if (prev.level < header.level) {
+          html += '<ul>' + link(header)
+        }
+      })
+
+      html += '</ul>'
+
+      document.body.insertAdjacentHTML('afterbegin', html)
+    </script>
+</body>
+</html>
