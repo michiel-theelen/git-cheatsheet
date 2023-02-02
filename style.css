@@ -1,26 +1,28 @@
 html, body {
-    background-color: rgb(71, 71, 71);
+    background-color: rgb(96, 125, 139);
     font: helvetica;
-    color:whitesmoke;  
+    color:hsl(200, 18%, 10%);
     scroll-behavior: smooth;
 }
 
 body {
+    position: relative;
     width:100%;
     height: 100%;
     font-family: helvetica, sans-serif;
     /* Center child horizontally*/
-    display: flex;
-    justify-content: right;
+    margin: auto;
 }
 
 .article {
+    padding-top:2em;
+    padding-bottom:2em;
     width:67%;
     min-width:460px;
-    max-width: 600px;
+    max-width: 800px;
     margin:2em;
     position: relative;
-    
+    margin: auto;
 }
 
 code p { 
@@ -28,31 +30,42 @@ code p {
     margin-block-end: 0;
 }
 
+code.command::before {
+    color: aqua;
+    content: "→ ";
+  }
+
+  code.comment{
+    color:rgb(180, 180, 180);
+  }
+
+code.comment::before{
+    content:"\00a0 \00a0";
+  }
+
 p {
     margin-top:1em;
-    margin-bottom:1em;
+    margin-bottom:0;
 }
 
-.terminal {
+/* pre:before {
+    content: ' ';
+    display: block;
+    height: 48px;
+    background: rgb(224, 224, 224);
+  } */
+
+  pre, code{
+    width:100%;
+  }
+pre {
+    margin-top: 0;
     position: relative;
-    background-color: black;
+    background-color: rgb(55, 71, 79);
     color: whitesmoke; 
-    border-radius: .3em;
-    border: .1em dashed white;
-    padding:1em;
-}
-
-h2 {
-    color:aqua;
-}
-
-h3 {
-    color:aquamarine;
-}
-
-code span:before {
-    content: '$ ';
-    user-select: none;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
 }
 
 span {
@@ -61,6 +74,27 @@ span {
     width:100%;
 }
 
+.warning{
+    content: "⚠️";
+    font-weight:900;
+    color:hsl(0, 100%, 65%);
+    margin-left: 2em;
+    margin:1em;
+    
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.warning::before{
+    content:"\00a0 \00a0";
+    user-select: none;
+
+}
+
+/* .warning::before{
+    content: "⚠️    ";
+} */
 button.copy-code {
     position: absolute;
     top: .5em;;
@@ -69,11 +103,23 @@ button.copy-code {
 
 }
 
+pre::before{
+        width: .75em;
+        height: .75em;
+        background: Crimson;
+        border-radius: 50%;
+        box-shadow: 15px 0 0 Orange, 30px 0 0 LimeGreen;
+        user-select: none;
+      }
+      
 pre,code {
     white-space: pre-line;
-    margin:0;
-    padding:0;
     text-align: left;
+}
+
+code{
+    font-size:1.1em;
+    padding-left: 1em;
 }
 
 button {
@@ -91,11 +137,15 @@ button:active{
 }
 
 ul {
-    position: fixed;
-    left: 1em;
-    top: 10em;
+    display:none;
+    top:0; left:0;
+    z-index: 2;
+    position:sticky;
     padding: 1em;
     background-color:hsl(180, 100%, 32%);
+    height: auto;
+    float: left;
+    
 }
 
 li{
@@ -107,10 +157,58 @@ li a {
     text-decoration: none;
 }
 
-h4 {
-    margin-bottom:0;
-}
-
 code::first-letter { 
     user-select: none;
   }
+
+  h1{
+    font-size: 3em;
+    font-weight: 300;
+    color: aqua;
+  }
+
+  h2{
+    font-size: 1.5em;
+    font-weight: 300;
+    color: rgb(81, 255, 0);
+  }
+
+  h3 {
+    font-size: .9em;
+    background: rgb(22, 26, 31);
+    margin-bottom: 0;
+    padding:.5em;
+    padding-left: 5em;
+    margin-bottom:0;
+    border-radius: .5em .5em 0 0;
+    color:white;
+    font-weight: 300;
+}
+
+h3::before {
+    content: "";
+    width: 50px;
+    position: absolute;
+    left: .7em;
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    border-radius: 50%;
+    background: hsl(0, 20%, 50%);
+    box-shadow: hsl(45, 20%, 55%) 19.272728px 0px 0px 0px, hsl(115, 20%, 49%) 38.545456px 0px 0px 0px, rgba(255, 255, 255, 0.2) 0.33px 1px 0.33px 0.33px, rgba(255, 255, 255, 0.2) 19.602728px 1px 0.33px 0.33px, rgba(255, 255, 255, 0.2) 38.875454px 1px 0.33px 0.33px;
+    z-index: 120;
+    user-select: none;
+    }
+
+    a{
+        font-weight: 900;
+        color: aqua !important;
+    }
+
+    a::before{
+        content: "\1F517";
+        font-style: normal;
+        display:inline-block;
+        margin-right: .5em;
+        user-select: none;
+    }

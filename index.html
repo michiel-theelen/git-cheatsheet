@@ -4,131 +4,141 @@
   </head>
   <body>
 
-
+ 
 
 
     <div class="article">
-      <h2>Git Cheat Sheet</h2>
+      <h1>Git Cheat Sheet</h2>
       <div class="article-content">
-        <p>There are already some great Git cheat sheets available online but I still find myself referring back to my own notes when I want to check something that I don’t do everyday. So for future reference here is the subset of Git commands that I tend to use most often:</p>
+        <p>This cheat sheet contains solutions to the issues I face most often while learning to use Git as a versioning system for my personal project. For every time I encountered an issue, i tried to include a section on this page, so that i have an easy reference to fall back on might I need it again.</p>
         
-        <h3 id="getting-started">Create repository and add to Github</h3>
-        <h4 id="create-new-repository">Create new repository</h4>
-        <pre class="terminal"><code>cd project-working-directory
-        git init</code></pre>
-   
-        <h4 id="adding-files-and-committing">Add files and commit changes</h4>
-        <pre class="terminal"><code>git add .
-        git commit -m 'initial commit'</code></pre>
-          
-        <h4 id="linking github">Link to Github and check if it worked</h4>
-        <p>Before this is possible, the empty repository should be made on Github. After creating the repository the, SSH-link can be copied from Github.</p>
-        <pre class="terminal"><code>git remote add origin git@github.com:themichiel/REPOSITORY-NAME.git
-          git remote -v</code></pre>
-         
-        <h4 id="pushing">Push to Github</h4>
-        <pre class="terminal"><code>git push -u origin master</code></pre>
+        <h2> Get started</h2>
+        
+        <p>There are two ways to start with Git. If you already have a local project, or want to start a completely new project, create a local repository. If you want to change an already existing remote repository, clone this repository to your local machine. In both cases, this sets you up to keep track of local changes and sync the local repository with the remote repository.</p>
+        <!-- Create local repository -->
+        <h3 id="create-new-repository">Create a local repository</h3>
+        <pre>
+          <code class="command">cd ~/PROJECT-DIRECTORY/;</code>
+          <code class="comment"># Moves to project directory</code>
+          <code class="command">git init;</code>
+          <code class="comment"># Creates local Git repository</code>
+          <code class="command">git add .;</code>
+          <code class="comment"># Adds all files in directory to repository</code>
+          <code class="command">git commit -m 'COMMIT-NAME';</code>
+          <code class="comment"># Makes initial commit</code>
+    
+        <p class="warning">Before continuing: <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">create an empty remote repository on Github.</a></p>
+          <code class="command">git remote add origin git@github.com:ACCOUNT-NAME/REPOSITORY-NAME.git;</code>
+          <code class="comment"># Add remote repository to local repository</code>
+          <code class="command">git remote -v;</code>
+          <code class="comment"># Verifies the new remote URL</code>
+          <code class="command">git push -u origin main;</code>
+          <code class="comment"># Updates remove repository</code>
+        </pre>
 
-        <h4 id="checking-status">Check status</h4>
-        <pre class="terminal"><code>git stats
-        git log [--pretty]</code></pre>
+        <!-- Clone existing repository-->
+        <h3 id="cloning-a-public-repository">Clone an existing remote Github repository</h3>
+        <pre>
+          <code class="command">cd ~/PATH-TO-PARENT-DIRECTORY/</code>
+          <code class="comment"># Moves to parent directory</code>
+          <code class="command">git clone https://github.com/USERNAME/REPOSITORY-NAME.git</code>
+          <code class="comment"># Clones remote repository into local repository</code>
+        </pre>
+        
+        <h2 id="branches">Commits</h2>
 
-        <h3 id="cloning-a-repository-from-github">Cloning a repository from github</h3>
-        <h4 id="cloning-a-public-repository">Cloning a public repository</h4>
-        <pre class="terminal"><code>$ git clone git://github.com/path-to-repository/project.git</code></pre>
-       
-        <h4 id="cloning-a-private-repository-to-which-we-can-later-push-changes">Cloning a private repository (to which we can later push changes):</h4>
-        <pre class="terminal"><code>$ git clone git@github.com:username/project.git </code></pre>
-        
-        <h4 id="synchronising-changes">Synchronising changes</h4>
-        <p>Pull changes from original source of clone (no need to specify remote repository name as it is stored when the repository was first cloned):</p>
-        <pre class="terminal"><code>$ git pull </code></pre>
-        <p>Make changes, add and commit then push updates to remote repository</p>
-        <pre class="terminal"><code>$ git push </code></pre>
-        
-        <h3 id="branches">Branches</h3>
-        <pre class="terminal"><code>$ git branch mybranch     (create the branch named 'mybranch')
-        $ git checkout mybranch   (switch to the branch)
-        $ git checkout master     (switch back to the master branch)
-        $ git branch              (list all branches) </code></pre>  
-        
-        <h4 id="pushing-a-branch">Pushing a branch</h4>
-        <pre class="terminal"><code>$ git push origin mybranch</code></pre>
-        
-        <h4 id="merging-a-branch">Merging a branch</h4>
-        <pre class="terminal"><code>$ git checkout master   (first switch to the master branch)
-        $ git merge mybranch    (merge all changes from mybranch into the master branch)
-        $ gid add &lt;file&gt;        (fix and add any conflicts)
-        $ git commit -m 'merged changes'</code></pre>
+        <h2 id="branches">Branches</h2>
 
-        <h4 id="delete-a-branch">Delete a branch</h4>
-        <pre class="terminal"><code>$ git branch -d mybranch</code></pre>
+          <!-- Rename local and remote repository -->      
+        <h3 id="create-new-repository">Rename local and remote repository</h3>
+        <pre>
+          <code class="command">git branch -m OLD-NAME NEW-NAME;</code>
+          <code class="comment"># Renames local branch</code>
+          <code class="command">git push origin -u NEW-NAME;</code>
+          <code class="comment"># Creates new remote repository with new name</code>
+          <div class="warning">Before continuing: <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">change the default branch in Github to new name.</a></div>
+          <code class="command">git push origin -d OLD-NAME;</code>
+          <code class="comment"># Removes remote branch</code>
+        </pre>
+
+        <h3>Branches</h3>
+        <pre>
+          <code class="command">git branch mybranch     (create the branch named 'mybranch')</code>
+          <code class="command"></code>git checkout mybranch   (switch to the branch)</code>
+          <code class="command"></code>git checkout master     (switch back to the master branch)</code>
+          <code class="command"></code>git branch              (list all branches) </code>
+        </pre>  
         
-        <h4 id="deleting-a-remote-branch">Deleting a remote branch</h4>
-        <pre class="terminal"><code>$ git push origin :mybranch</code></pre>
+        <h3 id="pushing-a-branch">Pushing a branch</h3>
+        <pre><code class="command">git push origin mybranch</code></pre>
         
-        <h3 id="tags">Tags</h3>
-        <h4 id="showing-tags">Showing tags</h4>
-        <pre class="terminal"><code>$ git tag [-l v1.*]</code></pre>
-        <h4 id="create-annotated-tag">Create annotated tag</h4>
-        <pre class="terminal"><code>$ git tag -a v1.5 -m 'version 1.5'</code></pre>
-        <h4 id="tagging-an-existing-commit">Tagging an existing commit</h4>
-        <pre class="terminal"><code>$ git tag -a v1.1 -m 'version 1.1' &lt;*checksum*&gt;  (checksum from git log)</code></pre>
-        <h4 id="pushing-tags">Pushing tags</h4>
-        <pre class="terminal"><code>$ git push --tags</code></pre>
+        <h3 id="merging-a-branch">Merging a branch</h3>
+        <pre><code class="command">git checkout master   (first switch to the master branch)
+        git merge mybranch    (merge all changes from mybranch into the master branch)
+        gid add &lt;file&gt;        (fix and add any conflicts)
+        git commit -m 'merged changes'</code></pre>
+
+        <h3 id="delete-a-branch">Delete a branch</h3>
+        <pre><code class="command">git branch -d mybranch</code></pre>
         
-        <h3 id="logs">Logs</h3>
-        <h4 id="view-changes-patches">View changes (patches)</h4>
-        <pre class="terminal"><code>$ git log -p</code></pre>
-        <h4 id="view-stats">View Stats</h4>
-        <pre class="terminal"><code>$ git log --stat</code></pre>
-        <h4 id="use-one-line-output">Use one line output</h4>
-        <pre class="terminal"><code>$ git log --pretty=oneline</code></pre>
-        <h4 id="view-branches">View branches</h4>
-        <pre class="terminal"><code>$ git log --pretty=oneline --graph</code></pre>
-        <h4 id="search-commit-messages">Search commit messages</h4>
-        <pre class="terminal"><code>$ git log --grep='pattern' --pretty=oneline</code></pre>
-        <h4 id="file-history">File History</h4>
-        <pre class="terminal"><code>$ git log --pretty=oneline -- &lt;file&gt;</code></pre>
-        <h4 id="directory-history">Directory History</h4>
-        <pre class="terminal"><code>$ git log --pretty=oneline --all -- &lt;dir&gt;</code></pre>
-        <h4 id="do-not-show-merges">Do not show merges</h4>
-        <pre class="terminal"><code>$ git log --pretty=oneline --no-merges</code></pre>
-        <h4 id="show-last-5-commits">Show last 5 commits</h4>
-        <pre class="terminal"><code>$ git log --pretty=oneline -5</code></pre>
-        <h4 id="commits-between-two-other-commits">Commits between two other commits</h4>
-        <pre class="terminal"><code>$ git log master..mybranch --pretty=oneline
-        $ git log</code></pre>
+        <h3 id="deleting-a-remote-branch">Deleting a remote branch</h3>
+        <pre><code class="command">git push origin :mybranch</code></pre>
         
-        <h3 id="diff">Diff</h3>
-        <h4 id="show-modifications-not-yet-staged">Show modifications not yet staged</h4>
-        <pre class="terminal"><code>$ git diff</code></pre>
-        <h4 id="show-modifications-not-yet-committed">Show modifications not yet committed</h4>
-        <pre class="terminal"><code>$ git diff --staged</code></pre>
-        <h4 id="show-all-changes-since-last-commit">Show all changes since last commit</h4>
-        <pre class="terminal"><code>$ git diff HEAD</code></pre>
-        <h4 id="show-changes-to-a-file-since-a-specific-tagged-commit">Show changes to a file since a specific (tagged) commit</h4>
-        <pre class="terminal"><code>$ git diff v1.0 -- &lt;file&gt;</code></pre>
-        <h4 id="show-stats-for-differences-between-two-tagged-commits">Show stats for differences between two (tagged) commits</h4>
-        <pre class="terminal"><code>$ git diff v1.0 v1.1 --stat</code></pre>
+        <h2 id="tags">Tags</h2>
+        <h3 id="showing-tags">Showing tags</h3>
+        <pre><code class="command">git tag [-l v1.*]</code></pre>
+        <h3 id="create-annotated-tag">Create annotated tag</h3>
+        <pre><code class="command">git tag -a v1.5 -m 'version 1.5'</code></pre>
+        <h3 id="tagging-an-existing-commit">Tagging an existing commit</h3>
+        <pre><code class="command">git tag -a v1.1 -m 'version 1.1' &lt;*checksum*&gt;  (checksum from git log)</code></pre>
+        <h3 id="pushing-tags">Pushing tags</h3>
+        <pre><code class="command">git push --tags</code></pre>
         
-        <h3 id="undo-changes">Undo Changes</h3>
-        <h4 id="unstage-a-file">Unstage a file</h4>
-        <pre class="terminal"><code>$ git reset HEAD &lt;file&gt;</code></pre>
+        <h2 id="logs">Logs</h2>
+        <h3 id="view-changes-patches">View changes (patches)</h3>
+        <pre><code class="command">git log -p</code></pre>
+        <h3 id="view-stats">View Stats</h3>
+        <pre><code class="command">git log --stat</code></pre>
+        <h3 id="use-one-line-output">Use one line output</h3>
+        <pre><code class="command">git log --pretty=oneline</code></pre>
+        <h3 id="view-branches">View branches</h3>
+        <pre><code class="command">git log --pretty=oneline --graph</code></pre>
+        <h3 id="search-commit-messages">Search commit messages</h3>
+        <pre><code class="command">git log --grep='pattern' --pretty=oneline</code></pre>
+        <h3 id="file-history">File History</h3>
+        <pre><code class="command">git log --pretty=oneline -- &lt;file&gt;</code></pre>
+        <h3 id="directory-history">Directory History</h3>
+        <pre><code class="command">git log --pretty=oneline --all -- &lt;dir&gt;</code></pre>
+        <h3 id="do-not-show-merges">Do not show merges</h3>
+        <pre><code class="command">git log --pretty=oneline --no-merges</code></pre>
+        <h3 id="show-last-5-commits">Show last 5 commits</h3>
+        <pre><code class="command">git log --pretty=oneline -5</code></pre>
+        <h3 id="commits-between-two-other-commits">Commits between two other commits</h3>
+        <pre><code class="command">git log master..mybranch --pretty=oneline
+        git log</code></pre>
+        
+        <h2 id="diff">Diff</h3>
+        <h3 id="show-modifications-not-yet-staged">Show modifications not yet staged</h3>
+        <pre><code class="command">git diff</code></pre>
+        <h3 id="show-modifications-not-yet-committed">Show modifications not yet committed</h3>
+        <pre><code class="command">git diff --staged</code></pre>
+        <h3 id="show-all-changes-since-last-commit">Show all changes since last commit</h3>
+        <pre><code class="command">git diff HEAD</code></pre>
+        <h3 id="show-changes-to-a-file-since-a-specific-tagged-commit">Show changes to a file since a specific (tagged) commit</h3>
+        <pre><code class="command">git diff v1.0 -- &lt;file&gt;</code></pre>
+        <h3 id="show-stats-for-differences-between-two-tagged-commits">Show stats for differences between two (tagged) commits</h3>
+        <pre><code class="command">git diff v1.0 v1.1 --stat</code></pre>
+        
+        <h2 id="undo-changes">Undo Changes</h2>
         <p>If you cannot remember this create an alias as follows:</p>
-        <pre class="terminal"><code>$ git config --global alias.unstage 'reset HEAD'
-        $ git unstage &lt;file&gt;</code></pre>
-        <h4 id="discard-changes-to-a-file">Discard changes to a file</h4>
-        <pre class="terminal"><code>$ git checkout -- &lt;file&gt;</code></pre>
-        
-        <h3 id="breaking-existing-commits-to-a-branch">Breaking Existing Commits to a Branch</h3>
-        <p>Make a note of the SHAR for the commit that you want to rollback to:</p>
-        <pre class="terminal"><code>$ git log --pretty=oneline</code></pre>
-        <p>Then switch to the branch and reset the head to the required commit</p>
-        <pre class="terminal"><code>$ git branch mybranch
-        $ git reset --hard &lt;SHAR&gt;</code></pre>
-        <p>If the previous head was pushed to a repository</p>
-        <pre class="terminal"><code>$ git push --force     (deletes all later changes!)</code></pre>
+        <h3 id="unstage-a-file">Unstage a file</h3>
+        <pre>
+          <code class="command">git reset HEAD &lt;file&gt;</code>
+          <code class="command">git config --global alias.unstage 'reset HEAD'</code>
+          <code class="command">git unstage &lt;file&gt;</code>
+        </pre>
+        <h3 id="discard-changes-to-a-file">Discard changes to a file</h3>
+        <pre><code class="command">git checkout -- &lt;file&gt;</code></pre>
         
     </div>
 
