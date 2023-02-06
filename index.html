@@ -24,32 +24,33 @@
 
         <!-- Set global username and email address -->
         <p>Before doing anything with Git, it it wise to configure your global user information first.</p>
-        <h3 id="cloning-a-public-repository">Set global username and email address</h3>
-        <pre>
+        
+        <div class="terminal">
+          <h3>Set global username and email address</h3>
           <code class="command">git config --global user.name "FIRST-NAME LAST-NAME";</code>
           <code class="comment"># Sets up username</code>
           <code class="command">git config --global user.email "EMAIL@EXAMPLE.COM";</code>
           <code class="comment"># Sets up email address</code>
-        </pre>
+        </div>
 
         <!-- Set repository-specific username and email address -->
         <p>Optionally, you can configure your repository-specific user information as well.</p>
-        <h3 id="cloning-a-public-repository">Set global username and email address</h3>
-        <pre>
+        <div class="terminal">
+          <h3>Set global username and email address</h3>
           <code class="command">git config user.name "FIRST-NAME LAST-NAME";</code>
           <code class="comment"># Sets up username</code>
           <code class="command">git config user.email "EMAIL@EXAMPLE.COM";</code>
           <code class="comment"># Sets up email address</code>
           <code class="command">cat .git/config;</code>
           <code class="comment"># Verifies configuration by displaying your config file</code>
-        </pre>
+        </div>
 
         <h2> Creating repository</h2>
 
         <!-- Create local repository -->
         <p>There are two main ways to start a new local Git repository:</p>
-        <h3 id="create-new-repository">Option 1: Create a new local repository</h3>
-        <pre>
+        <div class="terminal">
+          <h3 id="create-new-repository">Option 1: Create a new local repository</h3>
           <code class="command">cd ~/PROJECT-DIRECTORY/;</code>
           <code class="comment"># Moves to project directory</code>
           <code class="command">git init;</code>
@@ -64,26 +65,25 @@
           <code class="comment"># Verifies the new remote URL</code>
           <code class="command">git push -u origin main;</code>
           <code class="comment"># Pushes commit to remote repository</code>
-
-          <div class="info">If you haven't created an empty repository on github yet:
+          <div class="info">If you haven't created an empty repository on github yet:<br>
             <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">Create an empty remote repository on Github.</a></div>
-        </pre>
+        </div>
 
         <!-- Clone existing repository-->
-        <h3 id="cloning-a-public-repository">Option 2: Clone an existing remote Github repository</h3>
-        <pre>
+        <div class="terminal">
+          <h3>Option 2: Clone an existing remote Github repository</h3>
           <code class="command">cd ~/PATH_TO_PARENT_DIRECTORY/;</code>
           <code class="comment"># Moves to parent directory</code>
           <code class="command">git clone https://github.com/USERNAME/REPOSITORY-NAME.git;</code>
           <code class="comment"># Clones remote repository into local repository</code>
-        </pre>    
+        </div>    
         
         <h2 id="branches">Committing changes</h2>
 
         <!-- Commit and push-->
         <p>Committing changes is the process of recording changes to the repository's history. Commits serve as snapshots of your project at a given point in time and allow you to track changes and revert to earlier versions of your project if necessary.</p>
-        <h3 id="cloning-a-public-repository">Commit changes and push them to remote repository</h3>
-        <pre>
+        <div class="terminal">
+          <h3>Commit changes and push them to remote repository</h3>
           <code class="command">git checkout BRANCH-NAME;</code>
           <code class="comment"># Moves to specific branch.</code>
           <code class="command">git add .;</code>
@@ -93,226 +93,64 @@
           <code class="command">git push origin BRANCH-NAME;</code>
           <code class="comment"># Pushes the commit to remote repository</code>
 
-          <div class="info">Please check this out for best practises: 
+          <div class="info">Please check this out for best practises: <br>
             <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">Commit message conventions.</a></div>
-        </pre>
+        </div>
 
         <h2 id="branches">Changing latest commit</h2>
 
         <!-- Amend latest local commit-->
         <p>In Git, it is possible to make changes to previous commits in your repository. This is a valuable feature that enables you to correct mistakes or make updates to your code history, ensuring that your repository remains organized and up-to-date. Whether you need to fix a typo in a commit message, or want to combine several small commits into a single larger one, the ability to modify previous commits allows you to shape your repository's history in a way that best represents your work and makes it easier to collaborate with others. With this feature, you can maintain a clear and accurate record of the evolution of your code over time.</p>
-        <h3 id="cloning-a-public-repository">Correct a small mistake by amending</h3>
-        <pre>
+        <div class="terminal">
+          <h3>Correct a small mistake by amending</h3>
           <code class="command">git checkout BRANCH-NAME;</code>
           <code class="comment"># Moves to specific branch.</code>
           <code class="command">git commit --amend -m 'NEW_COMMIT_MESSAGE';</code>
           <code class="comment"># Amends latest commit in branch with new commit message.</code>
-
           <div class="warning">Only use the 'git commit --amend' command, when the commit isn't pushed to the remote repository yet! If someone has already pulled the previous commit and then you use 'git commit --amend' to change it, you'll create a conflict that can be difficult to resolve.</div><div class="info">If don't need to change the commit message, use the --no-edit flag:
-      
+
             <code class="command">git commit --amend --no-edit;</code>
             <code class="comment"># Amends latest commit without changing commit message.</code>
           </div>
-        </pre>
+        </div>
         
         <p>Git reset and git revert are two important commands in Git version control system used to manage changes in the codebase. Git reset allows you to reset the current branch head to a specific commit, effectively "rolling back" the project history to a previous state. On the other hand, Git revert is used to undo a specific commit by creating a new commit that reverses the changes made in the previous commit. Both Git reset and Git revert allow you to modify the project history, but they do so in different ways, so it's important to understand the difference between the two before using them.</p>
         <!-- Reset to previous commit on local and remote-->
-        <h3 id="cloning-a-public-repository">Option 1: Remove latest commit from local and remote repository with revert</h3>
-        <pre>
+        <div class="terminal">
+          <h3>Option 1: Remove latest commit from local and remote repository with revert</h3>
           <code class="command">git checkout BRANCH_NAME;</code>
           <code class="comment"># Moves to correct branch.</code>
           <code class="command">git revert HEAD;</code>
           <code class="comment"># Creates new commit to undo all changes of last commit.</code>
           <code class="command">git push origin BRANCH_NAME;</code>
           <code class="comment"># Pushes new commit to remote repository.</code>
-        </pre>
+        </div>
 
         <!-- Revert latest commit on local and remote-->
-        <h3 id="cloning-a-public-repository">Option 2: Remove latest commit from local and remote repository with reset</h3>
-        <pre>
+        <div class="terminal">
+          <h3>Option 2: Remove latest commit from local and remote repository with reset</h3>
           <code class="command">git reset --hard HEAD~1;</code>
           <code class="comment"># Removes latest commit from local repository.</code>
           <code class="command">git push origin HEAD --force;</code>
           <code class="comment"># Removes latest commit from local repository.</code>
-          
-          <div class="warning">Be cautious when using 'git push --force' as it permanently rewrites the history of the branch and can lead to data loss if other people have cloned the repository. A safer way to undo a commit is reverting the commit.</div></pre>
+          <div class="warning">Be cautious when using 'git push --force' as it permanently rewrites the history of the branch and can lead to data loss if other people have cloned the repository. A safer way to undo a commit is reverting the commit.</div></div>
 
         <h2 id="branches">Branches</h2>
 
           <!-- Rename local and remote repository -->      
-        <h3 id="create-new-repository">Rename local and remote repository</h3>
-        <pre>
+        <div class="terminal">
+          <h3 id="create-new-repository">Rename local and remote repository</h3>
           <code class="command">git branch -m OLD-NAME NEW-NAME;</code>
           <code class="comment"># Renames local branch</code>
           <code class="command">git push origin -u NEW-NAME;</code>
           <code class="comment"># Creates new remote repository with new name</code>
-
           <div class="info">Before continuing: <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">change the default branch in Github to new name.</a></div>      
           <code class="command">git push origin -d OLD-NAME;</code>
           <code class="comment"># Removes remote branch</code>
-        </pre>
-
-        <h3>Branches</h3>
-        <pre>
-          <code class="command">git branch mybranch     (create the branch named 'mybranch')</code>
-          <code class="command"></code>git checkout mybranch   (switch to the branch)</code>
-          <code class="command"></code>git checkout master     (switch back to the master branch)</code>
-          <code class="command"></code>git branch              (list all branches) </code>
-        </pre>  
-        
-        <h3 id="pushing-a-branch">Pushing a branch</h3>
-        <pre><code class="command">git push origin mybranch</code></pre>
-        
-        <h3 id="merging-a-branch">Merging a branch</h3>
-        <pre><code class="command">git checkout master   (first switch to the master branch)
-        git merge mybranch    (merge all changes from mybranch into the master branch)
-        gid add &lt;file&gt;        (fix and add any conflicts)
-        git commit -m 'merged changes'</code></pre>
-
-        <h3 id="delete-a-branch">Delete a branch</h3>
-        <pre><code class="command">git branch -d mybranch</code></pre>
-        
-        <h3 id="deleting-a-remote-branch">Deleting a remote branch</h3>
-        <pre><code class="command">git push origin :mybranch</code></pre>
-        
-        <h2 id="tags">Tags</h2>
-        <h3 id="showing-tags">Showing tags</h3>
-        <pre><code class="command">git tag [-l v1.*]</code></pre>
-        <h3 id="create-annotated-tag">Create annotated tag</h3>
-        <pre><code class="command">git tag -a v1.5 -m 'version 1.5'</code></pre>
-        <h3 id="tagging-an-existing-commit">Tagging an existing commit</h3>
-        <pre><code class="command">git tag -a v1.1 -m 'version 1.1' &lt;*checksum*&gt;  (checksum from git log)</code></pre>
-        <h3 id="pushing-tags">Pushing tags</h3>
-        <pre><code class="command">git push --tags</code></pre>
-        
-        <h2 id="logs">Logs</h2>
-        <h3 id="view-changes-patches">View changes (patches)</h3>
-        <pre><code class="command">git log -p</code></pre>
-        <h3 id="view-stats">View Stats</h3>
-        <pre><code class="command">git log --stat</code></pre>
-        <h3 id="use-one-line-output">Use one line output</h3>
-        <pre><code class="command">git log --pretty=oneline</code></pre>
-        <h3 id="view-branches">View branches</h3>
-        <pre><code class="command">git log --pretty=oneline --graph</code></pre>
-        <h3 id="search-commit-messages">Search commit messages</h3>
-        <pre><code class="command">git log --grep='pattern' --pretty=oneline</code></pre>
-        <h3 id="file-history">File History</h3>
-        <pre><code class="command">git log --pretty=oneline -- &lt;file&gt;</code></pre>
-        <h3 id="directory-history">Directory History</h3>
-        <pre><code class="command">git log --pretty=oneline --all -- &lt;dir&gt;</code></pre>
-        <h3 id="do-not-show-merges">Do not show merges</h3>
-        <pre><code class="command">git log --pretty=oneline --no-merges</code></pre>
-        <h3 id="show-last-5-commits">Show last 5 commits</h3>
-        <pre><code class="command">git log --pretty=oneline -5</code></pre>
-        <h3 id="commits-between-two-other-commits">Commits between two other commits</h3>
-        <pre><code class="command">git log master..mybranch --pretty=oneline
-        git log</code></pre>
-        
-        <h2 id="diff">Diff</h3>
-        <h3 id="show-modifications-not-yet-staged">Show modifications not yet staged</h3>
-        <pre><code class="command">git diff</code></pre>
-        <h3 id="show-modifications-not-yet-committed">Show modifications not yet committed</h3>
-        <pre><code class="command">git diff --staged</code></pre>
-        <h3 id="show-all-changes-since-last-commit">Show all changes since last commit</h3>
-        <pre><code class="command">git diff HEAD</code></pre>
-        <h3 id="show-changes-to-a-file-since-a-specific-tagged-commit">Show changes to a file since a specific (tagged) commit</h3>
-        <pre><code class="command">git diff v1.0 -- &lt;file&gt;</code></pre>
-        <h3 id="show-stats-for-differences-between-two-tagged-commits">Show stats for differences between two (tagged) commits</h3>
-        <pre><code class="command">git diff v1.0 v1.1 --stat</code></pre>
-        
-        <h2 id="undo-changes">Undo Changes</h2>
-        <p>If you cannot remember this create an alias as follows:</p>
-        <h3 id="unstage-a-file">Unstage a file</h3>
-        <pre>
-          <code class="command">git reset HEAD &lt;file&gt;</code>
-          <code class="command">git config --global alias.unstage 'reset HEAD'</code>
-          <code class="command">git unstage &lt;file&gt;</code>
-        </pre>
-        <h3 id="discard-changes-to-a-file">Discard changes to a file</h3>
-        <pre><code class="command">git checkout -- &lt;file&gt;</code></pre>
+        </div>
         
     </div>
 
-    <script>
-      
-      let copyButtonLabel = "Copy Code";
-      // use a class selector if available
-      let blocks = document.querySelectorAll(".terminal");
-
-      blocks.forEach((block) => {
-        // only add button if browser supports Clipboard API
-        if (navigator.clipboard) {
-          let button = document.createElement("button");
-          button.classList.add('copy-code');
-
-          button.innerText = copyButtonLabel;
-          block.appendChild(button);
-
-          button.addEventListener("click", async () => {
-            await copyCode(block, button);
-          });
-        }
-      });
-
-      async function copyCode(block, button) {
-        let code = block.querySelector("code");
-        let text = code.innerText;
-
-        await navigator.clipboard.writeText(text);
-      }
-    </script>
-
-    <script>
-      // extract all headers
-
-      var headers = []
-
-      function walk (nodes) {
-        nodes.forEach((node) => {
-          var sub = Array.from(node.childNodes)
-          if (sub.length) {
-            walk(sub)
-          }
-          if (/h3/i.test(node.tagName)) {
-            headers.push({
-              id: node.getAttribute('id'),
-              level: parseInt(node.tagName.replace('H', '')),
-              title: node.innerText
-            })
-          }
-        })
-      }
-
-      walk(Array.from(document.body.childNodes))
-
-      console.dir(headers)
-
-      // generate TOC
-
-      var link = (header) =>
-        '<li><a href="#' + header.id + '">' + header.title + '</a></li>'
-
-      var html = '<ul>'
-
-      headers.forEach((header, index) => {
-        if (index) {
-          var prev = headers[index - 1]
-        }
-        if (!index || prev.level === header.level) {
-          html += link(header)
-        }
-        else if (prev.level > header.level) {
-          html += '</ul>' + link(header)
-        }
-        else if (prev.level < header.level) {
-          html += '<ul>' + link(header)
-        }
-      })
-
-      html += '</ul>'
-
-      document.body.insertAdjacentHTML('afterbegin', html)
-    </script>
 </body>
 </html>
 

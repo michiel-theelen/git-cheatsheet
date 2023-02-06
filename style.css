@@ -26,37 +26,6 @@ h2{
   color: greenyellow;
 }
 
-h3 {
-  font-size: .9em;
-  background: rgb(22, 26, 31);
-  margin-bottom: 0;
-  padding:.5em;
-  padding-left: 4em;
-  border-radius: .5em .5em 0 0;
-  color: greenyellow;
-  font-weight: 300;
-}
-
-h3::before {
-  content: "";
-  width: 50px;
-  position: absolute;
-  left: .7em;
-  width: .7em;
-  height: .7em;
-  margin-top: .23em;
-  border-radius: 50%;
-  background: hsl(0, 0%, 50%);
-  box-shadow: hsl(45, 0%, 50%) .9em 0px 0px 0px, hsl(115, 0%, 50%) 1.8em 0px 0px 0px;
-  z-index: 120;
-  user-select: none;
-  }
-
-h3:hover::before{
-  background: hsl(0, 50%, 50%);
-  box-shadow: hsl(45, 50%, 50%) .9em 0px 0px 0px, hsl(115, 50%, 50%) 1.8em 0px 0px 0px;
-}
-
 a{
     font-weight: 900;
     color: aqua ;
@@ -86,29 +55,72 @@ a::before{
     margin-right: auto;
 }
 
-pre {
+.terminal {
   position: relative;
-  white-space: pre-line;
+
   margin: 0;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  margin-top: 1em;
+  border-radius: .5em .5em 0 0;
   background-color: rgb(55, 71, 79);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 17px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
 }
 
-pre div{
+.terminal div{
   margin: 0;
 }
 
-pre > *{
-  padding-right: 1em;
-  padding-left: 2.8rem !important;
+.terminal > *{
+  margin-left: 2.8rem;
+  margin-right: 1em;
+  font-size: 1.2em;
+}
+
+.terminal > div {
+  padding-left: 2.8rem;
+}
+
+.terminal > h3 {
+  position: relative;
+  font-size: .9em;
+  background: rgb(22, 26, 31);
+  margin-bottom: 0;
+  padding:.5em;
+  padding-left: 4em;
+  border-radius: .5em .5em 0 0;
+  color: greenyellow;
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.terminal > h3::before {
+  content: "";
+  width: 50px;
+  position: absolute;
+  left: .7em;
+  width: .7em;
+  height: .7em;
+  margin-top: .23em;
+  border-radius: 50%;
+  background: hsl(0, 0%, 50%);
+  box-shadow: hsl(45, 0%, 50%) .9em 0px 0px 0px, hsl(115, 0%, 50%) 1.8em 0px 0px 0px;
+  z-index: 120;
+  user-select: none;
+  }
+
+.terminal > h3:hover::before{
+  background: hsl(0, 50%, 50%);
+  box-shadow: hsl(45, 50%, 50%) .9em 0px 0px 0px, hsl(115, 50%, 50%) 1.8em 0px 0px 0px;
 }
 
 code{
-  font-size:1.1em;
+  display: block;
   color:white;
   margin:0;
+}
+
+code:last-child{
+  padding-bottom: 1rem;
 }
 
 code.command::before {
@@ -128,28 +140,26 @@ code.comment{
 
 .warning{
     position: relative;
+    padding: 1em;
     background-color: rgba(139, 0, 0, 0.2);
     color:red;
-    padding: 1em; 
+    font-size: 1.1em;
+    font-family: monospace;
 }
 
-.warning:nth-child(1){
-    margin-top:-1em;
-}
-
-.warning:nth-last-child(1){
-    margin-bottom:-1em;
+.terminal div:first-of-type{
+    margin-top:1em;
 }
 
 .warning::before{
     position: absolute;
     top: .3em;
     left: .3em;
-    font-size: 1.6em;
     content: "⚠";
     border-radius: 5px;
     width: 1.2em;
     height: 1.2em;
+    font-size: 1.6em;
 
     display: flex;
     align-items: center;
@@ -161,6 +171,8 @@ code.comment{
   background-color: rgba(184, 135, 11, 0.2);
   color:goldenrod;
   padding: 1em;
+  font-size: 1.1em;
+  font-family: monospace;
   
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -172,22 +184,13 @@ code.comment{
   padding-left: 2.8rem;
 }
 
-.info:nth-child(1){
-  margin-top:-1em;
-}
-
-.info:nth-last-child(1){
-  margin-bottom:-2.2em;
-}
-
 .info::before{
   position: absolute;
   top: .4em;
   left: .3em;
   content:"✎";
-  font-size:1.6em;
+  font-size: 1.6em;
   color:goldenrod;
-  border-radius: 5px;
   width: 1.2em;
   height: 1.2em;
 
