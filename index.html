@@ -4,19 +4,51 @@
   </head>
   <body>
 
- 
-
+    <div class="header">
+      <input type="checkbox" id="check" />
+      <label class="menu" for="check">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </label>
+      <div class="menu-text">Menu</div>
+    </div>
 
     <div class="article">
-      <h1>Git Cheat Sheet</h2>
+      <h1>Let's Git Started!</h2>
       <div class="article-content">
-        <p>This cheat sheet contains solutions to the issues I face most often while learning to use Git as a versioning system for my personal project. For every time I encountered an issue, i tried to include a section on this page, so that i have an easy reference to fall back on might I need it again.</p>
+
+        <p>Git is a powerful and widely-used version control system that allows developers to track changes in their code and collaborate on projects more effectively. With Git, you can keep a complete history of your codebase, revert to previous versions, and collaborate with other developers with ease. Whether you're working on a small personal project or a large team effort, Git offers a flexible and reliable solution for managing your code and ensuring that every iteration is captured and saved. Its popularity and widespread adoption have made it an essential tool for developers, making it a must-know for anyone looking to work in the tech industry.</p>
         
-        <h2> Get started</h2>
-        
-        <p>There are two ways to start with Git. If you already have a local project, or want to start a completely new project, create a local repository. If you want to change an already existing remote repository, clone this repository to your local machine. In both cases, this sets you up to keep track of local changes and sync the local repository with the remote repository.</p>
+        <h2> Configuring Git</h2>
+
+        <!-- Set global username and email address -->
+        <p>Before doing anything with Git, it it wise to configure your global user information first.</p>
+        <h3 id="cloning-a-public-repository">Set global username and email address</h3>
+        <pre>
+          <code class="command">git config --global user.name "FIRST-NAME LAST-NAME";</code>
+          <code class="comment"># Sets up username</code>
+          <code class="command">git config --global user.email "EMAIL@EXAMPLE.COM";</code>
+          <code class="comment"># Sets up email address</code>
+        </pre>
+
+        <!-- Set repository-specific username and email address -->
+        <p>Optionally, you can configure your repository-specific user information as well.</p>
+        <h3 id="cloning-a-public-repository">Set global username and email address</h3>
+        <pre>
+          <code class="command">git config user.name "FIRST-NAME LAST-NAME";</code>
+          <code class="comment"># Sets up username</code>
+          <code class="command">git config user.email "EMAIL@EXAMPLE.COM";</code>
+          <code class="comment"># Sets up email address</code>
+          <code class="command">cat .git/config;</code>
+          <code class="comment"># Verifies configuration by displaying your config file</code>
+        </pre>
+
+        <h2> Creating repository</h2>
+
         <!-- Create local repository -->
-        <h3 id="create-new-repository">Create a local repository</h3>
+        <p>There are two main ways to start a new local Git repository:</p>
+        <h3 id="create-new-repository">Option 1: Create a new local repository</h3>
         <pre>
           <code class="command">cd ~/PROJECT-DIRECTORY/;</code>
           <code class="comment"># Moves to project directory</code>
@@ -26,26 +58,84 @@
           <code class="comment"># Adds all files in directory to repository</code>
           <code class="command">git commit -m 'COMMIT-NAME';</code>
           <code class="comment"># Makes initial commit</code>
-    
-        <p class="warning">Before continuing: <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">create an empty remote repository on Github.</a></p>
           <code class="command">git remote add origin git@github.com:ACCOUNT-NAME/REPOSITORY-NAME.git;</code>
           <code class="comment"># Add remote repository to local repository</code>
           <code class="command">git remote -v;</code>
           <code class="comment"># Verifies the new remote URL</code>
           <code class="command">git push -u origin main;</code>
-          <code class="comment"># Updates remove repository</code>
+          <code class="comment"># Pushes commit to remote repository</code>
+
+          <div class="info">If you haven't created an empty repository on github yet:
+            <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">Create an empty remote repository on Github.</a></div>
         </pre>
 
         <!-- Clone existing repository-->
-        <h3 id="cloning-a-public-repository">Clone an existing remote Github repository</h3>
+        <h3 id="cloning-a-public-repository">Option 2: Clone an existing remote Github repository</h3>
         <pre>
-          <code class="command">cd ~/PATH-TO-PARENT-DIRECTORY/</code>
+          <code class="command">cd ~/PATH_TO_PARENT_DIRECTORY/;</code>
           <code class="comment"># Moves to parent directory</code>
-          <code class="command">git clone https://github.com/USERNAME/REPOSITORY-NAME.git</code>
+          <code class="command">git clone https://github.com/USERNAME/REPOSITORY-NAME.git;</code>
           <code class="comment"># Clones remote repository into local repository</code>
+        </pre>    
+        
+        <h2 id="branches">Committing changes</h2>
+
+        <!-- Commit and push-->
+        <p>Committing changes is the process of recording changes to the repository's history. Commits serve as snapshots of your project at a given point in time and allow you to track changes and revert to earlier versions of your project if necessary.</p>
+        <h3 id="cloning-a-public-repository">Commit changes and push them to remote repository</h3>
+        <pre>
+          <code class="command">git checkout BRANCH-NAME;</code>
+          <code class="comment"># Moves to specific branch.</code>
+          <code class="command">git add .;</code>
+          <code class="comment"># Adds all files to git (staging).</code>
+          <code class="command">git commit -m "COMMIT-MESSAGE";</code>
+          <code class="comment"># Commit changes to local repository.</code>
+          <code class="command">git push origin BRANCH-NAME;</code>
+          <code class="comment"># Pushes the commit to remote repository</code>
+
+          <div class="info">Please check this out for best practises: 
+            <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">Commit message conventions.</a></div>
+        </pre>
+
+        <h2 id="branches">Changing latest commit</h2>
+
+        <!-- Amend latest local commit-->
+        <p>In Git, it is possible to make changes to previous commits in your repository. This is a valuable feature that enables you to correct mistakes or make updates to your code history, ensuring that your repository remains organized and up-to-date. Whether you need to fix a typo in a commit message, or want to combine several small commits into a single larger one, the ability to modify previous commits allows you to shape your repository's history in a way that best represents your work and makes it easier to collaborate with others. With this feature, you can maintain a clear and accurate record of the evolution of your code over time.</p>
+        <h3 id="cloning-a-public-repository">Correct a small mistake by amending</h3>
+        <pre>
+          <code class="command">git checkout BRANCH-NAME;</code>
+          <code class="comment"># Moves to specific branch.</code>
+          <code class="command">git commit --amend -m 'NEW_COMMIT_MESSAGE';</code>
+          <code class="comment"># Amends latest commit in branch with new commit message.</code>
+
+          <div class="warning">Only use the 'git commit --amend' command, when the commit isn't pushed to the remote repository yet! If someone has already pulled the previous commit and then you use 'git commit --amend' to change it, you'll create a conflict that can be difficult to resolve.</div><div class="info">If don't need to change the commit message, use the --no-edit flag:
+      
+            <code class="command">git commit --amend --no-edit;</code>
+            <code class="comment"># Amends latest commit without changing commit message.</code>
+          </div>
         </pre>
         
-        <h2 id="branches">Commits</h2>
+        <p>Git reset and git revert are two important commands in Git version control system used to manage changes in the codebase. Git reset allows you to reset the current branch head to a specific commit, effectively "rolling back" the project history to a previous state. On the other hand, Git revert is used to undo a specific commit by creating a new commit that reverses the changes made in the previous commit. Both Git reset and Git revert allow you to modify the project history, but they do so in different ways, so it's important to understand the difference between the two before using them.</p>
+        <!-- Reset to previous commit on local and remote-->
+        <h3 id="cloning-a-public-repository">Option 1: Remove latest commit from local and remote repository with revert</h3>
+        <pre>
+          <code class="command">git checkout BRANCH_NAME;</code>
+          <code class="comment"># Moves to correct branch.</code>
+          <code class="command">git revert HEAD;</code>
+          <code class="comment"># Creates new commit to undo all changes of last commit.</code>
+          <code class="command">git push origin BRANCH_NAME;</code>
+          <code class="comment"># Pushes new commit to remote repository.</code>
+        </pre>
+
+        <!-- Revert latest commit on local and remote-->
+        <h3 id="cloning-a-public-repository">Option 2: Remove latest commit from local and remote repository with reset</h3>
+        <pre>
+          <code class="command">git reset --hard HEAD~1;</code>
+          <code class="comment"># Removes latest commit from local repository.</code>
+          <code class="command">git push origin HEAD --force;</code>
+          <code class="comment"># Removes latest commit from local repository.</code>
+          
+          <div class="warning">Be cautious when using 'git push --force' as it permanently rewrites the history of the branch and can lead to data loss if other people have cloned the repository. A safer way to undo a commit is reverting the commit.</div></pre>
 
         <h2 id="branches">Branches</h2>
 
@@ -56,7 +146,8 @@
           <code class="comment"># Renames local branch</code>
           <code class="command">git push origin -u NEW-NAME;</code>
           <code class="comment"># Creates new remote repository with new name</code>
-          <div class="warning">Before continuing: <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">change the default branch in Github to new name.</a></div>
+
+          <div class="info">Before continuing: <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo" target="_blank">change the default branch in Github to new name.</a></div>      
           <code class="command">git push origin -d OLD-NAME;</code>
           <code class="comment"># Removes remote branch</code>
         </pre>
@@ -224,3 +315,4 @@
     </script>
 </body>
 </html>
+
